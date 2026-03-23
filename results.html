@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mejores Amigos - Results</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.23/jspdf.plugin.autotable.min.js"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-gray-900 text-white min-h-screen p-4">
+
+    <div class="max-w-4xl mx-auto space-y-8 pt-8">
+        <div class="text-center space-y-2">
+            <h1 class="text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-yellow-600">
+                🏆 Auction Completed!
+            </h1>
+            <p class="text-gray-400">The squads are locked. Here are the results.</p>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="flex flex-wrap justify-center gap-4">
+            <button id="exportPdfBtn" class="bg-blue-600 hover:bg-blue-500 px-6 py-3 rounded-xl font-bold shadow-lg flex items-center gap-2">
+                📄 Download PDF
+            </button>
+            <div id="adminResultControls" class="hidden flex gap-4">
+                <button id="exportJsonBtn" class="bg-gray-700 hover:bg-gray-600 px-6 py-3 rounded-xl font-bold shadow-lg border border-gray-600">
+                    💾 JSON Data
+                </button>
+                <button id="newAuctionBtn" class="bg-red-600 hover:bg-red-500 px-6 py-3 rounded-xl font-bold shadow-lg">
+                    🔄 Start New Auction
+                </button>
+            </div>
+        </div>
+
+        <!-- Teams Grid -->
+        <div id="teamsContainer" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <!-- Teams injected here -->
+        </div>
+    </div>
+
+    <script type="module" src="app.js"></script>
+</body>
+</html>

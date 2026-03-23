@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Mejores Amigos - Join Game</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+</head>
+<body class="bg-gray-900 text-white min-h-screen flex flex-col items-center justify-center p-4 relative overflow-hidden">
+
+    <!-- Background Elements -->
+    <div class="absolute top-0 left-0 w-full h-full overflow-hidden -z-10">
+        <div class="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] bg-blue-600/20 rounded-full blur-[120px]"></div>
+        <div class="absolute bottom-[-10%] right-[-10%] w-[50%] h-[50%] bg-purple-600/20 rounded-full blur-[120px]"></div>
+    </div>
+
+    <div class="max-w-md w-full text-center space-y-8 animate-fade-in z-10">
+        
+        <!-- Logo Section -->
+        <div class="space-y-6">
+            <div class="relative inline-block group">
+                <div class="absolute -inset-1 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full blur opacity-50 group-hover:opacity-75 transition duration-1000 group-hover:duration-200"></div>
+                <img src="https://ui-avatars.com/api/?name=MA&background=0F172A&color=3B82F6&size=128&bold=true" alt="Logo" class="relative mx-auto rounded-full w-32 h-32 shadow-2xl border-4 border-gray-800">
+            </div>
+            
+            <div>
+                <h1 class="text-5xl font-extrabold tracking-tight mb-2">
+                    <span class="bg-clip-text text-transparent bg-gradient-to-r from-blue-400 via-purple-400 to-emerald-400">
+                        Mejores Amigos
+                    </span>
+                </h1>
+                <p class="text-gray-400 text-lg font-medium">The Ultimate Live Auction</p>
+            </div>
+        </div>
+
+        <!-- Login Card -->
+        <div class="bg-gray-800/80 backdrop-blur-xl p-8 rounded-3xl shadow-2xl border border-gray-700/50">
+            <div id="joinForm" class="space-y-6">
+                
+                <div class="space-y-2 text-left">
+                    <label class="text-sm font-semibold text-gray-400 ml-1">PLAYER NAME</label>
+                    <div class="relative group">
+                        <input type="text" id="username" placeholder="Enter your name" 
+                            class="w-full px-5 py-4 bg-gray-900/50 border border-gray-600 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none text-xl placeholder-gray-600 transition-all text-center font-bold text-white group-hover:border-gray-500"
+                            autocomplete="off" spellcheck="false">
+                        <div class="absolute inset-0 rounded-xl ring-1 ring-inset ring-white/10 pointer-events-none"></div>
+                    </div>
+                    <p class="text-[10px] text-gray-500 italic mt-1 ml-1">*Type "CANCEL" to reset entire game server.</p>
+                </div>
+                
+                <!-- Admin Password Field -->
+                <div id="adminPanel" class="hidden space-y-2 text-left animate-slide-down">
+                    <label class="text-sm font-semibold text-yellow-500 ml-1">ADMIN PIN</label>
+                    <input type="password" id="adminPassword" placeholder="Enter PIN code" 
+                        class="w-full px-5 py-4 bg-gray-900/50 border border-yellow-500/50 rounded-xl focus:ring-2 focus:ring-yellow-500 focus:border-transparent outline-none text-xl placeholder-gray-600 transition-all text-center font-bold text-yellow-100 tracking-widest">
+                </div>
+
+                <button id="joinBtn" class="w-full py-4 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 rounded-xl font-bold text-xl shadow-lg transition-all transform active:scale-95 flex items-center justify-center gap-2">
+                    <span>🎮</span> Enter Stadium
+                </button>
+            </div>
+        </div>
+
+        <!-- Footer Links -->
+        <div class="flex justify-center gap-6 text-sm font-medium text-gray-500">
+            <button onclick="document.getElementById('helpModal').classList.remove('hidden')" class="hover:text-white transition-colors flex items-center gap-1 group">
+                <span class="group-hover:scale-110 transition-transform">❓</span> How to Play
+            </button>
+            <span class="text-gray-700">|</span>
+            <button onclick="document.getElementById('aboutModal').classList.remove('hidden')" class="hover:text-white transition-colors flex items-center gap-1 group">
+                <span class="group-hover:scale-110 transition-transform">ℹ️</span> About
+            </button>
+        </div>
+    </div>
+
+    <!-- Help Modal -->
+    <div id="helpModal" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm animate-fade-in">
+        <div class="bg-gray-800 rounded-2xl max-w-lg w-full max-h-[90vh] flex flex-col border border-gray-700 shadow-2xl">
+            <div class="p-6 border-b border-gray-700 flex justify-between items-center bg-gray-800 rounded-t-2xl z-10">
+                <h2 class="text-2xl font-bold text-blue-400">📋 Interactive Rules</h2>
+                <button onclick="document.getElementById('helpModal').classList.add('hidden')" class="text-gray-400 hover:text-white text-2xl">&times;</button>
+            </div>
+            
+            <div class="p-6 space-y-6 overflow-y-auto custom-scrollbar text-gray-300">
+                <details class="bg-gray-900/50 p-4 rounded-xl border border-gray-700" open>
+                    <summary class="font-bold text-white cursor-pointer select-none">1. Budget & Bidding</summary>
+                    <p class="mt-2 text-sm leading-relaxed">
+                        Start with <strong>₹15.00 Crore</strong>. Each bid increases price by <strong>₹5 Lakh</strong>. 
+                        You must reserve ₹10 Lakh for every empty squad slot.
+                    </p>
+                </details>
+                <details class="bg-gray-900/50 p-4 rounded-xl border border-gray-700">
+                    <summary class="font-bold text-white cursor-pointer select-none">2. Squad Limits</summary>
+                    <p class="mt-2 text-sm leading-relaxed">
+                        Total 18 players required: 3 GK, 5 DEF, 5 MID, 5 FWD. Once you reach a limit, you can't bid on that position.
+                    </p>
+                </details>
+                <details class="bg-gray-900/50 p-4 rounded-xl border border-gray-700">
+                    <summary class="font-bold text-white cursor-pointer select-none">3. Live Timer</summary>
+                    <p class="mt-2 text-sm leading-relaxed">
+                        When a bid is placed, the timer resets to <strong>10 seconds</strong>. If it hits zero, the player is SOLD to the highest bidder.
+                    </p>
+                </details>
+            </div>
+            <div class="p-4 border-t border-gray-700 bg-gray-900 rounded-b-2xl">
+                <button onclick="document.getElementById('helpModal').classList.add('hidden')" class="w-full py-3 bg-blue-600 hover:bg-blue-500 rounded-xl font-bold shadow-lg transition-all">
+                    Got it!
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="app.js"></script>
+    <script>
+        document.getElementById('username').addEventListener('input', (e) => {
+            const val = e.target.value.toLowerCase();
+            const panel = document.getElementById('adminPanel');
+            const btn = document.getElementById('joinBtn');
+            if (val.endsWith('admin')) {
+                panel.classList.remove('hidden');
+                btn.innerHTML = "👑 Login as Admin";
+            } else if (val === 'cancel') {
+                panel.classList.add('hidden');
+                btn.innerHTML = "🛑 Reset System";
+            } else {
+                panel.classList.add('hidden');
+                btn.innerHTML = "🎮 Enter Stadium";
+            }
+        });
+    </script>
+</body>
+</html>
